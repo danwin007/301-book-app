@@ -1,0 +1,25 @@
+{
+  "name": "301-book-app",
+  "version": "1.0.0",
+  "description": "Workspace for CF 301 book app lab",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "superagent": "^5.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danwin007/301-book-app.git"
+  },
+  "author": "brett packard and daniel nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danwin007/301-book-app/issues"
+  },
+  "homepage": "https://github.com/danwin007/301-book-app#readme"
+}
