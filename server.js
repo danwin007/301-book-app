@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
   res.render('pages/index.ejs');
 });
 
+app.get('/searches/new', (req, res) => {
+  res.render('pages/searches/new.ejs');
+})
+
 // app.get('/book', (req, res) => {
 
 //   // select * from some database ...

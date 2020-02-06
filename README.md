@@ -10,16 +10,22 @@ Workspace for CF 301 book app lab
 We are building a mobile app that allows folks to search books via the Google API, save them to a list, manipulate that list, and delete stuff.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+The user should clone down our repo and fire this thing up.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres, ejs, dotenv, and SQL to run this app.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+// 2020.2.5 DAY 1 //
+6:30pm: John ran us through the full iteration of how this project should go. We got some pizza and asked some questions.
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+7:00pm: Brett and I started getting base files set up. 
+
+7:30pmISH: We got some early commits out. 
+
+8:00pm: Ran into some issues with getting the server up. Turns out, I (Daniel) totally misunderstood some basics. Talked to Cory to resolve issue getting dotenv hooked up.
+
+8:40pm: Got page up, basic styling, working on getting other task items integrated. Brett looked up API info.
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
