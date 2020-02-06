@@ -1,9 +1,23 @@
 html {
-  background-color: lightblue;
+  background-color: lightgrey;
+  display: grid;
 
 
 }
 
 body {
-  
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+} 
+
+body {
+background-color: lightblue;
+}
+
+.searchForm {
+  background-color: lightgoldenrodyellow;
+  justify-content: center;
 }
