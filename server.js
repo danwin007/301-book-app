@@ -31,13 +31,10 @@ function Book(data){
   this.author = data.authors || ['No author available'] ;
   this.description = data.description || 'No description available';
   this.image = data.imageLinks.thumbnail || 'No image available';
-}
 
 function searchHandler (request, response) {
   try {
-
     let url = `https://www.googleapis.com/books/v1/volumes?q=`;
-    // console.log(request);
     console.log(request.body);
 
     if (request.body.searchby === 'title') { url += `+intitle:${request.body.search}`; }
@@ -55,7 +52,6 @@ function searchHandler (request, response) {
     errorHandler('something went wrong w the searchhandler', request, response);
   }
 }
-
 
 //ERROR HANDLER
 function errorHandler(error, request, response) {

@@ -35,5 +35,11 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 8:00pm: built out book constructor, searchHandler, and rendering stuff on show.ejs. Tested and ran into issues. Might have something wrong with data submission.
 
+8:30pm: Got stuck. Talked to John. We had a huge issue with our form submit. Then had lots of issues with our call syntax. He helped us fix and we went on our way.
+
+8:50pm: Talked to John again after getting stuck. He helped us fix our EJS calls. Were were using inconsistent variables when calling and pulling from the API. Looks to be mostly working now.
+
+
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
