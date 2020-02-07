@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
 app.get('/searches/new', (req, res) => {
   res.render('pages/searches/new.ejs');
 })
+
+app.get('/searches/show', (req, res) => {
+  res.render('pages/searches/show.ejs');
+})
 app.post('/searches', searchHandler);
 
 //BOOK CONSTRUCTOR OBJ
