@@ -27,11 +27,10 @@ app.post('/searches', searchHandler);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
-  this.title = data.title || ['No title available'];
-  this.author = data.authors || ['No author available'];
-  this.description = data.description || ['No description available'];
-  this.image = data.imageLinks.thumbnail || ['No image available'];
-}
+  this.title = data.title || 'No title available';
+  this.author = data.authors || ['No author available'] ;
+  this.description = data.description || 'No description available';
+  this.image = data.imageLinks.thumbnail || 'No image available';
 
 function searchHandler (request, response) {
   try {
@@ -43,8 +42,11 @@ function searchHandler (request, response) {
 
     console.log(url);
     superagent.get(url)
-      .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)) )
-      .then(results => response.render('pages/searches/show.ejs', {books: results}));
+      .then(console.log('I am here'))
+      .then(apiResponse => apiResponse.body.items.map(bookResult => { return new Book(bookResult.volumeInfo)}) )
+      .then(console.log('bookResult'))
+      .then(results => response.render('pages/searches/show.ejs', {books: results}))
+      .then(console.log('lastLine'))
   }
   catch (error){
     errorHandler('something went wrong w the searchhandler', request, response);
