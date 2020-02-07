@@ -18,15 +18,26 @@ app.get('/searches/new', (req, res) => {
   res.render('pages/searches/new.ejs');
 })
 
-// app.get('/book', (req, res) => {
+// app.get('/searches', (req, res) => {
 
 //   // select * from some database ...
 //   let book = {
 //     title: 'cool things',
-//     author: 'awesome person'
+//     author: 'awesome person',
+//     img: 'img',
+//     description: 'fun book'
 //   };
 
-//   res.render('pages/book', { peanuts: book })
+
+//BOOK CONSTRUCTOR OBJ
+function Book(data){
+  this.title = data.body.items.volumeinfo.title,
+  this.author = data.body.items.volumeinfo.authors[0],
+  this.description = data.body.items.volumeinfo.description,
+  this.image = data.body.items.volumeinfo.imageLinks.thumbnail
+};
+
+//   res.render('pages/books', { peanuts: book })
 //   // res.status(200).json(book);
 // });
 
@@ -39,20 +50,25 @@ app.get('/searches/new', (req, res) => {
 //   console.log(req.query);
 //   res.status(200).send('You did a GET');
 // });
+app.post('/searches', searchHandler);
 
-// app.post('/search', (req, res) => {
-//   // what did the person type?
-//   let title = req.body.title || "hockey";
-//   // get a list from google
+function searchHandler (req, res) {
+  try {
+    
+  }
+  // what did the person type?
+  let title = req.body.title || "hockey";
+  // get a list from google
 
-//   let url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}`;
+  let url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}`;
 
-//   superagent.get(url)
-//     .then(data => {
-//       // render the list in ejs
-//       res.render('pages/books', { books: data.body.items })
-//     })
-// });
+  superagent.get(url)
+    .then(data => {
+      // render the list in ejs
+      res.render('pages/books', { books: data.body.items })
+    })
+});
+
 
 
 // app.post('/save', (req, res) => {
