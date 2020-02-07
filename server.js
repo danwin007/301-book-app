@@ -27,17 +27,15 @@ app.post('/searches', searchHandler);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
-  this.title = data.title || 'No title available';
-  this.author = data.authors || 'No author available';
-  this.description = data.description || 'No description available';
-  this.image = data.imageLinks.thumbnail || 'No image available';
+  this.title = data.title || ['No title available'];
+  this.author = data.authors || ['No author available'];
+  this.description = data.description || ['No description available'];
+  this.image = data.imageLinks.thumbnail || ['No image available'];
 }
 
 function searchHandler (request, response) {
   try {
-
     let url = `https://www.googleapis.com/books/v1/volumes?q=`;
-    // console.log(request);
     console.log(request.body);
 
     if (request.body.searchby === 'title') { url += `+intitle:${request.body.search}`; }
@@ -46,13 +44,12 @@ function searchHandler (request, response) {
     console.log(url);
     superagent.get(url)
       .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)) )
-      .then(results => response.render('pages/show', {searchResults: results}));
+      .then(results => response.render('pages/searches/show.ejs', {books: results}));
   }
   catch (error){
     errorHandler('something went wrong w the searchhandler', request, response);
   }
 }
-
 
 //ERROR HANDLER
 function errorHandler(error, request, response) {
