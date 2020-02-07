@@ -22,27 +22,28 @@ app.get('/searches/new', (req, res) => {
 app.get('/searches/show', (req, res) => {
   res.render('pages/searches/show.ejs');
 })
+
 app.post('/searches', searchHandler);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
-  this.title = data.body.items.volumeinfo.title || 'No title available';
-  this.author = data.body.items.volumeinfo.authors || 'No author available';
-  this.description = data.body.items.volumeinfo.description || 'No description available';
-  this.image = data.body.items.volumeinfo.imageLinks.thumbnail || 'No image available';
+  this.title = data.title || 'No title available';
+  this.author = data.authors || 'No author available';
+  this.description = data.description || 'No description available';
+  this.image = data.imageLinks.thumbnail || 'No image available';
 }
 
 function searchHandler (request, response) {
   try {
 
     let url = `https://www.googleapis.com/books/v1/volumes?q=`;
-
+    // console.log(request);
     console.log(request.body);
-    console.log(request.body.search);
 
-    if (request.body.search[1] === 'title') { url += `+intitle:${request.body.search[0]}&key=${GOOGLE_BOOK_API_KEY}`; }
-    if (request.body.search[1] === 'author') { url += `+inauthor:${request.body.search[0]}&key=${GOOGLE_BOOK_API_KEY}`; }
+    if (request.body.searchby === 'title') { url += `+intitle:${request.body.search}`; }
+    if (request.body.searchby === 'author') { url += `+inauthor:${request.body.search}`; }
 
+    console.log(url);
     superagent.get(url)
       .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)) )
       .then(results => response.render('pages/show', {searchResults: results}));
