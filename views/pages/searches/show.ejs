@@ -24,7 +24,20 @@
     <ul>
       <% books.forEach( book => { %>
       <li>
-        <%= book.volumeInfo.title %>
+        <img src="<%= results.thumbnail %>" />
+      </li>
+      <li>
+        <%= results.title %>
+      </li>
+      <li>
+        <%= results.authors.forEach( author => { %>
+          <li>
+            <%= author %>
+          </li>
+        <%= }); %>
+      </li>
+      <li>
+        <$= results.description %>
       </li>
       <% }) %>
   
