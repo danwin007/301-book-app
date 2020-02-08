@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 
+// ROUTES //
 app.get('/', (req, res) => {
   res.render('pages/index.ejs');
 });
@@ -18,63 +19,44 @@ app.get('/searches/new', (req, res) => {
   res.render('pages/searches/new.ejs');
 })
 
-// app.get('/searches', (req, res) => {
+app.get('/searches/show', (req, res) => {
+  res.render('pages/searches/show.ejs');
+})
 
-//   // select * from some database ...
-//   let book = {
-//     title: 'cool things',
-//     author: 'awesome person',
-//     img: 'img',
-//     description: 'fun book'
-//   };
-
+app.post('/searches', searchHandler);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
-  this.title = data.body.items.volumeinfo.title,
-  this.author = data.body.items.volumeinfo.authors[0],
-  this.description = data.body.items.volumeinfo.description,
-  this.image = data.body.items.volumeinfo.imageLinks.thumbnail
-};
+  this.title = data.title || 'No title available';
+  this.author = data.authors || ['No author available'] ;
+  this.description = data.description || 'No description available';
+  this.image = data.imageLinks.thumbnail || 'No image available';
+}
 
-//   res.render('pages/books', { peanuts: book })
-//   // res.status(200).json(book);
-// });
-
-// app.get('/food', (req, res) => {
-//   let foods = ['cherries', 'choclate', 'sherry'];
-//   res.render('pages/food', { ingredients: foods })
-// })
-
-// app.get('/search', (req, res) => {
-//   console.log(req.query);
-//   res.status(200).send('You did a GET');
-// });
-app.post('/searches', searchHandler);
-
-function searchHandler (req, res) {
+function searchHandler (request, response) {
   try {
-    
+    let url = `https://www.googleapis.com/books/v1/volumes?q=`;
+    console.log(request.body);
+
+    if (request.body.searchby === 'title') { url += `+intitle:${request.body.search}`; }
+    if (request.body.searchby === 'author') { url += `+inauthor:${request.body.search}`; }
+
+    console.log(url);
+    superagent.get(url)
+      .then(console.log('I am here'))
+      .then(apiResponse => apiResponse.body.items.map(bookResult => { return new Book(bookResult.volumeInfo)}) )
+      .then(console.log('bookResult'))
+      .then(results => response.render('pages/searches/show.ejs', {books: results}))
+      .then(console.log('lastLine'))
   }
-  // what did the person type?
-  let title = req.body.title || "hockey";
-  // get a list from google
+  catch (error){
+    errorHandler('something went wrong w the searchhandler', request, response);
+  }
+}
 
-  let url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}`;
-
-  superagent.get(url)
-    .then(data => {
-      // render the list in ejs
-      res.render('pages/books', { books: data.body.items })
-    })
-});
-
-
-
-// app.post('/save', (req, res) => {
-//   console.log(req.query);
-//   console.log(req.body);
-//   res.status(200).send('You did a POST');
-// });
+//ERROR HANDLER
+function errorHandler(error, request, response) {
+  response.status(500).send(error);
+}
 
 app.listen(process.env.PORT, () => console.log(`up on ${process.env.PORT}`));
