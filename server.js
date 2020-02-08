@@ -4,6 +4,8 @@ const superagent = require('superagent');
 const express = require('express');
 const app = express();
 
+const client = new pg.Client(process.env.DATABASE_URL);
+
 app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
@@ -11,9 +13,13 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES //
+ //Render home page
 app.get('/', (req, res) => {
   res.render('pages/index.ejs');
 });
+
+// Render saved list to home page
+app.get('/', savedRender);
 
 app.get('/searches/new', (req, res) => {
   res.render('pages/searches/new.ejs');
@@ -25,12 +31,24 @@ app.get('/searches/show', (req, res) => {
 
 app.post('/searches', searchHandler);
 
+
+
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
   this.title = data.title || 'No title available';
   this.author = data.authors || ['No author available'] ;
   this.description = data.description || 'No description available';
   this.image = data.imageLinks.thumbnail || 'No image available';
+  this.isbn = data.industryIdentifiers.identifier || 'No ISBN available';
+}
+
+//should render saved list to homepage
+function savedRender (request, response) {
+  let SQL = "SELECT * FROM books";
+  client.query(SQL)
+    .then (results => {
+      response.render('pages/index.ejs', {books: results.rows})
+    })
 }
 
 function searchHandler (request, response) {
@@ -59,4 +77,9 @@ function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
-app.listen(process.env.PORT, () => console.log(`up on ${process.env.PORT}`));
+client.connect()
+  .then(() => {
+    app.listen(process.env.PORT, () => console.log(`up on ${process.env.PORT}`));
+  })
+  .catch(() => console.log('port client issue'));
+
