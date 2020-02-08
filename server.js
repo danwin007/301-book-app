@@ -31,6 +31,7 @@ function Book(data){
   this.author = data.authors || ['No author available'] ;
   this.description = data.description || 'No description available';
   this.image = data.imageLinks.thumbnail || 'No image available';
+}
 
 function searchHandler (request, response) {
   try {

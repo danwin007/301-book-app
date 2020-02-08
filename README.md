@@ -39,6 +39,7 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 8:50pm: Talked to John again after getting stuck. He helped us fix our EJS calls. Were were using inconsistent variables when calling and pulling from the API. Looks to be mostly working now.
 
+9:10pm: We worked out most of the issues. We have data populating to the page. Just need to work on CSS and a couple other small features.
 
 
 ## Credits and Collaborations
