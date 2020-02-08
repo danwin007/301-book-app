@@ -1,6 +1,5 @@
 'use strict';
 require('dotenv').config();
-
 const pg = require('pg');
 const superagent = require('superagent');
 const express = require('express');
@@ -82,5 +81,5 @@ client.connect()
   .then(() => {
     app.listen(process.env.PORT, () => console.log(`up on ${process.env.PORT}`));
   })
-  .catch(() => console.log('port client issue'));
+  // .catch(() => console.log('port client issue'));
 
