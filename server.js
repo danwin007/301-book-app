@@ -1,5 +1,6 @@
 'use strict';
 require('dotenv').config();
+
 const pg = require('pg');
 const superagent = require('superagent');
 const express = require('express');
@@ -33,7 +34,6 @@ app.get('/searches/show', (req, res) => {
 app.post('/searches', searchHandler);
 
 
-
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
   this.title = data.title || 'No title available';
@@ -45,7 +45,7 @@ function Book(data){
 
 //should render saved list to homepage
 function savedRender (request, response) {
-  let SQL = "SELECT * FROM books";
+  let SQL = `SELECT * FROM books`;
   client.query(SQL)
     .then (results => {
       response.render('pages/index.ejs', {books: results.rows})
@@ -82,5 +82,5 @@ client.connect()
   .then(() => {
     app.listen(process.env.PORT, () => console.log(`up on ${process.env.PORT}`));
   })
-  // .catch(() => console.log('port client issue'));
+  .catch(() => console.log('port client issue'));
 
