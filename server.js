@@ -34,14 +34,14 @@ app.get('/searches/show', (req, res) => {
 app.post('/searches', searchHandler);
 
 //Route Button to Save From Search
-app.post('/pages/show', saveFromSearch);
+app.post('/show', saveFromSearch);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
   this.title = data.title || 'No title available';
   this.author = data.authors ? data.authors.join(', ') : 'No author available';
   this.description = data.description || 'No description available';
-  this.image = data.imageLinks.thumbnail || 'No image available';
+  this.image_url = data.imageLinks.thumbnail || 'No image available';
   this.isbn = data.industryIdentifiers[0].identifier || 'No ISBN available';
 }
 
@@ -57,7 +57,7 @@ function saveFromSearch (request, response) {
 
   client.query(SQL, values)
     .then(results => {
-      response.render('pages/show.ejs', { books: results.rows[0]})
+      response.render('/show.ejs', { books: results.rows[0]})
       response.redirect('/');
     });
 }
