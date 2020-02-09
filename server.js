@@ -34,7 +34,7 @@ app.get('/searches/show', (req, res) => {
 app.post('/searches', searchHandler);
 
 //Route Button to Save From Search
-app.post('/pages/show', saveFromSearch);
+app.post('/show', saveFromSearch);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
@@ -43,7 +43,7 @@ function Book(data){
   this.description = data.description ? data.description : 'No description available';
   this.image = data.imageLinks ? data.imageLinks.thumbnail : 'https://static1.fjcdn.com/comments/404+funny+not+found+inb4+its+already+been+_001ff3344783fb5362fd5d596d4f7e0c.jpg';
   this.isbn = data.industryIdentifiers ? data.industryIdentifiers[0].identifier : 'No ISBN available';
-}
+
 
 //Should push book item to DB from search results
 function saveFromSearch (request, response) {
@@ -57,7 +57,7 @@ function saveFromSearch (request, response) {
 
   client.query(SQL, values)
     .then(results => {
-      response.render('pages/show.ejs', { books: results.rows[0]})
+      response.render('/show.ejs', { books: results.rows[0]})
       response.redirect('/');
     });
 }
