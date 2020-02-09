@@ -39,7 +39,7 @@ function Book(data){
   this.author = data.authors || ['No author available'] ;
   this.description = data.description || 'No description available';
   this.image = data.imageLinks.thumbnail || 'No image available';
-  this.isbn = data.industryIdentifiers.identifier || 'No ISBN available';
+  this.isbn = data.industryIdentifiers.identifier || ['No ISBN available'];
 }
 
 //should render saved list to homepage

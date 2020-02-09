@@ -4,7 +4,7 @@ CREATE TABLE books (
   id SERIAL PRIMARY KEY,
   title TEXT,
   author TEXT,
-  isbn NUMBER,
+  isbn TEXT,
   image_url TEXT,
   description TEXT
 );
