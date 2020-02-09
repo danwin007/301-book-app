@@ -38,11 +38,11 @@ app.post('/pages/show', saveFromSearch);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
-  this.title = data.title || 'No title available';
+  this.title = data.title ? data.title : 'No title available';
   this.author = data.authors ? data.authors.join(', ') : 'No author available';
-  this.description = data.description || 'No description available';
-  this.image = data.imageLinks.thumbnail || 'No image available';
-  this.isbn = data.industryIdentifiers[0].identifier || 'No ISBN available';
+  this.description = data.description ? data.description : 'No description available';
+  this.image = data.imageLinks ? data.imageLinks.thumbnail : 'https://static1.fjcdn.com/comments/404+funny+not+found+inb4+its+already+been+_001ff3344783fb5362fd5d596d4f7e0c.jpg';
+  this.isbn = data.industryIdentifiers ? data.industryIdentifiers[0].identifier : 'No ISBN available';
 }
 
 //Should push book item to DB from search results
