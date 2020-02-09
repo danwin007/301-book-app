@@ -15,10 +15,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES //
- //Render home page
-app.get('/', (req, res) => {
-  res.render('pages/index.ejs');
-});
+//Render home page
+// app.get('/', (req, res) => {
+//   res.render('pages/index.ejs');
+// });
 
 // Render saved list to home page
 app.get('/', savedRender);
@@ -37,7 +37,7 @@ app.post('/searches', searchHandler);
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
   this.title = data.title || 'No title available';
-  this.author = data.authors || ['No author available'] ;
+  this.author = data.authors ? data.authors.join(', ') : 'No author available';
   this.description = data.description || 'No description available';
   this.image = data.imageLinks.thumbnail || 'No image available';
   this.isbn = data.industryIdentifiers[0].identifier || 'No ISBN available';
@@ -45,9 +45,10 @@ function Book(data){
 
 //should render saved list to homepage
 function savedRender (request, response) {
-  let SQL = `SELECT * FROM books`;
+  let SQL = `SELECT * FROM books;`;
   client.query(SQL)
     .then (results => {
+      console.log('results rows ',results.rows);
       response.render('pages/index.ejs', {books: results.rows})
     })
 }

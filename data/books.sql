@@ -12,4 +12,4 @@ CREATE TABLE books (
 INSERT INTO books
   (title, author, isbn, image_url, description)
 VALUES
-  ('TITLE', 'AUTHOR', 'ISBN','https://img.clipartlook.com/book-20clipart-clip-art-of-a-book-1754_1240.jpg', 'BOOK DESCRIP')
+  ('TITLE', 'AUTHOR', 'ISBN','https://img.clipartlook.com/book-20clipart-clip-art-of-a-book-1754_1240.jpg', 'BOOK DESCRIP');

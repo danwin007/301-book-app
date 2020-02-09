@@ -17,11 +17,7 @@
         <%= book.title %>
       </li>
       <li>
-        <% book.author.forEach( author => { %>
-          <li>
-            <%= author %>
-          </li>
-        <% }) %>
+        <%= book.author %>
       </li>
       <li>
         <%= book.description %>
