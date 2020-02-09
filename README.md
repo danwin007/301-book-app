@@ -45,5 +45,7 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 2:00pm: finished lunch, partner power hour, and career work. Now settling into starting on this lab. 
 
+4:30pm: been working on getting homepage dummy data rendering. Needed help from Cory and Leo to do that. Dummy data is working now. 
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->

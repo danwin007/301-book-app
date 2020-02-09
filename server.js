@@ -33,6 +33,8 @@ app.get('/searches/show', (req, res) => {
 
 app.post('/searches', searchHandler);
 
+//Route Button to Save From Search
+app.post('/pages/show', saveFromSearch);
 
 //BOOK CONSTRUCTOR OBJ
 function Book(data){
@@ -41,6 +43,23 @@ function Book(data){
   this.description = data.description || 'No description available';
   this.image = data.imageLinks.thumbnail || 'No image available';
   this.isbn = data.industryIdentifiers[0].identifier || 'No ISBN available';
+}
+
+//Should push book item to DB from search results
+function saveFromSearch (request, response) {
+  console.log('request fron save fn', request);
+  let SQL = `
+  INSERT INTO books (title, author, isbn, image_url, description)
+  VALUES ($1, $2, $3, $4, $5)
+  RETURNING *
+  `;
+  let values = [request.body.title, request.body.author, request.body.isbn, request.body.image_url, request.body.description];
+
+  client.query(SQL, values)
+    .then(results => {
+      response.render('pages/show.ejs', { books: results.rows[0]})
+      response.redirect('/');
+    });
 }
 
 //should render saved list to homepage
