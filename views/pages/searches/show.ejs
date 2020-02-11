@@ -1,20 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hello World!</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/icons.css">
-    <link rel="stylesheet" href="styles/modules.css">
-    <link rel="stylesheet" href="styles/layout.css">
-  </head>
+
+  <%- include('../layout/head.ejs') %>
+
   <body>
     <h1>Hello World!!</h1>
     <h2>
@@ -23,22 +10,29 @@
   
     <ul>
       <% books.forEach( book => { %>
-      <li>
-        <img src="<%= book.image %>" alt="<%= book.image %>" />
-      </li>
-      <li>
-        <%= book.title %>
-      </li>
-      <li>
-        <% book.author.forEach( author => { %>
-          <li>
-            <%= author %>
-          </li>
-        <% }) %>
-      </li>
-      <li>
-        <%= book.description %>
-      </li>
+        <li>
+          <img src="<%= book.image_url %>" alt="<%= book.title %>" />
+        </li>
+        <li>
+          <%= book.title %>
+        </li>
+        <li>
+          <%= book.author %>
+        </li>
+        <li>
+          <%= book.description %>
+        </li>
+        <li>
+          <%= book.isbn %>
+        </li>
+        <form action="/show" method="post">
+        <input type="hidden" value="<%= book.image_url%>" name="image_url">
+        <input type="hidden" value="<%= book.title%>" name="title">
+        <input type="hidden" value="<%= book.author%>" name="author">
+        <input type="hidden" value="<%= book.description%>" name="description">
+        <input type="hidden" value="<%= book.isbn%>" name="isbn">
+        <input type="submit" value="saveBook">
+      </form>
       <% }) %>
   
     </ul>

@@ -16,7 +16,7 @@ The user should clone down our repo and fire this thing up.
 We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres, ejs, dotenv, and SQL to run this app.
 
 ## Change Log
-// 2020.2.5 DAY 1 //
+### // 2020.2.5 DAY 1 //
 6:30pm: John ran us through the full iteration of how this project should go. We got some pizza and asked some questions.
 
 7:00pm: Brett and I started getting base files set up. 
@@ -27,7 +27,7 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 8:40pm: Got page up, basic styling, working on getting other task items integrated. Brett looked up API info.
 
-// 2020.2.6 DAY 2 //
+### // 2020.2.6 DAY 2 //
 
 6:30pm: started working on lab again. This one is mad confusing.
 
@@ -41,6 +41,11 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 9:10pm: We worked out most of the issues. We have data populating to the page. Just need to work on CSS and a couple other small features.
 
+### // 2020.2.8 DAY 3 //
+
+2:00pm: finished lunch, partner power hour, and career work. Now settling into starting on this lab. 
+
+4:30pm: been working on getting homepage dummy data rendering. Needed help from Cory and Leo to do that. Dummy data is working now. 
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
