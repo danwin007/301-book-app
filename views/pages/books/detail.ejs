@@ -55,11 +55,11 @@
         <button>Update Details</button>
       </form>
       <form method="POST" action="/books/<%= book.id %>?_method=PUT">
-        <input type="text" placeholder="<%= book.image_url%>"  value="<%- book.image_url%>" name="image_url"/>
-        <input type="text" placeholder="<%= book.title%>" value="<%- book.title%>" name="title"/>
-        <input type="text" placeholder="<%= book.author%>" value="<%- book.author%>" name="author"/>
-        <input type="text" placeholder="<%= book.description%>" value="<%- book.description%>" name="description"/>
-        <input type="text" placeholder="<%= book.isbn%>" value="<%- book.isbn%>" name="isbn"/>
+        <input type="text" value="<%= book.image_url%>" placeholder="<%= book.image_url%>" name="image_url">
+        <input type="text" value="<%= book.title%>" placeholder="<%= book.title%>" name="title">
+        <input type="text" value="<%= book.author%>" placeholder="<%= book.author%>" name="author">
+        <input type="text" value="<%= book.description%>" placeholder="<%= book.description%>" name="description">
+        <input type="text" value="<%= book.isbn%>" placeholder="<%= book.isbn%>" name="isbn">
         <button type="submit" value="update">Update Book</button>
       </form>
 
