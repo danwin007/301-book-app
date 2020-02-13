@@ -55,5 +55,7 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 7:05pm: Buttons live now. Worked on some minor CSS as well. Need to build routes and forms for update/delete before working on functionality.
 
+7:35pm: Got the Delete button working on the Details page. Brett is working on the Update functionality. I'll pivot to helping with that.
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
