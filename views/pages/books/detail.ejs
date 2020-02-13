@@ -17,9 +17,10 @@
   <body>
   
     <h1>Book Details</h1> 
+    <% results.forEach ( book => { %>
 
-        <img src="<%= book.image_url %>" alt="<%= book.title %>" />
-        
+      <img src="<%= book.image_url %>" alt="" />
+      
       <h3>
         <%= book.title %>
       </h3>
@@ -29,7 +30,8 @@
       <p>
         <%= book.description %>
       </p>
-    
+      
+    <% }) %>
     
     <script src="../server.js" async defer></script>
   </body>
