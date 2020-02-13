@@ -57,5 +57,7 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 7:35pm: Got the Delete button working on the Details page. Brett is working on the Update functionality. I'll pivot to helping with that.
 
+9:00pm: I've got the hamburger menu working. Brett got most of the Update functionality working. We are gonna sort out merge conflicts and Brett will finish Update features while I work on CSS the rest of the night.
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->

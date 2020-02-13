@@ -34,7 +34,7 @@ app.get('/searches/show', (req, res) => {
 
 app.post('/books/:id', renderDetails);
 app.delete('/books/:id', deleteBook);
-app.put('books/:id', updateBook);
+app.put('/books/:id', updateBook);
 
 app.get('/books/show', (req, res) => {
   res.render('pages/books/show.ejs');
@@ -78,7 +78,7 @@ function updateBook (request, response) {
   console.log('made it this far Brett');
   let SQL = 'UPDATE books SET image_url=$1, title=$2, author=$3, description=$4, isbn=$5 WHERE id=$6';
   console.log(`in 'updateBook' but not in client.query\n${SQL}`);
-  let values = [request.params.image_url, request.params.title, request.params.author, request.params.description, request.params.isbn, request.params.id];
+  let values = [request.body.image_url, request.body.title, request.body.author, request.body.description, request.body.isbn, request.params.id];
   return client.query(SQL, values)
     .then(() => {
       console.log(SQL, values);
