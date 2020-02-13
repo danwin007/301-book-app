@@ -23,6 +23,10 @@
       <li>
         <%= book.isbn %>
       </li>
+      <!-- details button -->
+      <form  method='post' action='/books/<%= book.id %>'>
+        <button>Details</button>
+        </form>
       <% }) %>
   
     </ul>

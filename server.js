@@ -31,9 +31,7 @@ app.get('/searches/show', (req, res) => {
   res.render('pages/searches/show.ejs');
 })
 
-app.get('/books/detail', (req, res) => {
-  res.render('pages/books/detail.ejs');
-})
+app.post('/books/:id', renderDetails);
 
 app.get('/books/show', (req, res) => {
   res.render('pages/books/show.ejs');
@@ -51,6 +49,16 @@ function Book(data){
   this.description = data.description ? data.description : 'No description available';
   this.image_url = data.imageLinks ? data.imageLinks.thumbnail : 'https://static1.fjcdn.com/comments/404+funny+not+found+inb4+its+already+been+_001ff3344783fb5362fd5d596d4f7e0c.jpg';
   this.isbn = data.industryIdentifiers ? data.industryIdentifiers[0].identifier : 'No ISBN available';
+}
+
+function renderDetails (request, response) {
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
+  let values = [request.params.id];
+  return client.query(SQL, values)
+    .then(results => {
+      return response.render('pages/books/detail.ejs', {results: results.rows});
+    })
+    .catch(err => errorHandler (err, response));
 }
 
 //Should push book item to DB from search results
