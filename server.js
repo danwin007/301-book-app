@@ -31,6 +31,14 @@ app.get('/searches/show', (req, res) => {
   res.render('pages/searches/show.ejs');
 })
 
+app.get('/books/detail', (req, res) => {
+  res.render('pages/books/detail.ejs');
+})
+
+app.get('/books/show', (req, res) => {
+  res.render('pages/books/show.ejs');
+})
+
 app.post('/searches', searchHandler);
 
 //Route Button to Save From Search
@@ -47,7 +55,7 @@ function Book(data){
 
 //Should push book item to DB from search results
 function saveFromSearch (request, response) {
-  console.log('request fron save fn', request);
+  console.log('request from save fn', request);
   let SQL = `
   INSERT INTO books (title, author, isbn, image_url, description)
   VALUES ($1, $2, $3, $4, $5)
