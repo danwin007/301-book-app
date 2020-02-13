@@ -22,3 +22,8 @@ font-size: 20px;
   background-color: lightgoldenrodyellow;
   justify-content: center;
 }
+
+header li {
+  display: inline-block;
+  padding-bottom: 50px;
+}
