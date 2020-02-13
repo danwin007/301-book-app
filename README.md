@@ -51,5 +51,9 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
  
 5:00pm: Got to class early. Going to try and build out Details page before Brett gets in.
 
+6:30pm: Got the details page to load correctly. You can click from homepage to details page for individual books now. Gonna start adding buttons for Update/Delete on details page now.
+
+7:05pm: Buttons live now. Worked on some minor CSS as well. Need to build routes and forms for update/delete before working on functionality.
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->

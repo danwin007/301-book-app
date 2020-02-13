@@ -5,7 +5,7 @@ const pg = require('pg');
 const superagent = require('superagent');
 const express = require('express');
 const app = express();
-
+const methodOverride = require('method-override');
 const client = new pg.Client(process.env.DATABASE_URL);
 
 app.use(express.static('./public'));
@@ -13,6 +13,7 @@ app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 // ROUTES //
 //Render home page
