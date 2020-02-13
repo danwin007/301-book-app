@@ -121,6 +121,11 @@ function searchHandler (request, response) {
   }
 }
 
+
+//Helper Functions
+
+
+
 //ERROR HANDLER
 function errorHandler(error, request, response) {
   response.status(500).send(error);
