@@ -33,6 +33,7 @@ app.get('/searches/show', (req, res) => {
 })
 
 app.post('/books/:id', renderDetails);
+app.delete('/books/:id', deleteBook);
 
 app.get('/books/show', (req, res) => {
   res.render('pages/books/show.ejs');
@@ -58,6 +59,16 @@ function renderDetails (request, response) {
   return client.query(SQL, values)
     .then(results => {
       return response.render('pages/books/detail.ejs', {results: results.rows});
+    })
+    .catch(err => errorHandler (err, response));
+}
+
+function deleteBook (request, response) {
+  let SQL = 'DELETE FROM books WHERE id=$1';
+  let values = [request.params.id];
+  return client.query(SQL, values)
+    .then(() => {
+      response.redirect('/');
     })
     .catch(err => errorHandler (err, response));
 }

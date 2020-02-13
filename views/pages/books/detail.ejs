@@ -47,8 +47,8 @@
         <button>Update Details</button>
       </form>
 
-      <form>
-        <button>Delete Book</button>
+      <form method='post' action='/books/<%= book.id %>?_method=delete'>
+        <button type='submit'>Delete Book</button>
       </form>
 
     <% }) %>
