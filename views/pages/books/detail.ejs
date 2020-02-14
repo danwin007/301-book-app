@@ -34,41 +34,44 @@
 
   <body>
 
- 
-  
-    <h1>Book Details</h1> 
-    <% results.forEach ( book => { %>
-
-      <img src="<%= book.image_url %>" alt="" />
-      
-      <h3>
-        <%= book.title %>
-      </h3>
-      <h4>
-        <%= book.author %>
-      </h4>
-      <p>
-        <%= book.description %>
-      </p>
-      
-      <form>
-        <button>Update Details</button>
-      </form>
-      <form method="POST" action="/books/<%= book.id %>?_method=PUT">
-        <input type="text" value="<%= book.image_url%>" placeholder="<%= book.image_url%>" name="image_url">
-        <input type="text" value="<%= book.title%>" placeholder="<%= book.title%>" name="title">
-        <input type="text" value="<%= book.author%>" placeholder="<%= book.author%>" name="author">
-        <input type="text" value="<%= book.description%>" placeholder="<%= book.description%>" name="description">
-        <input type="text" value="<%= book.isbn%>" placeholder="<%= book.isbn%>" name="isbn">
-        <button type="submit" value="update">Update Book</button>
-      </form>
-
-      <form method='post' action='/books/<%= book.id %>?_method=delete'>
-        <button type='submit'>Delete Book</button>
-      </form>
-
-    <% }) %>
     
-    <script src="../js/app.js"></script>
-  </body>
-</html>
+    <section class="card">
+
+      
+      <h1>Book Details</h1> 
+      <% results.forEach ( book => { %>
+        
+        <img src="<%= book.image_url %>" alt="" />
+        
+        <h3>
+          <%= book.title %>
+        </h3>
+        <h4>
+          <%= book.author %>
+        </h4>
+        <p>
+          <%= book.description %>
+        </p>
+        
+        <form>
+          <button>Update Details</button>
+        </form>
+        <form method="POST" action="/books/<%= book.id %>?_method=PUT">
+          <input type="text" value="<%= book.image_url%>" placeholder="<%= book.image_url%>" name="image_url">
+          <input type="text" value="<%= book.title%>" placeholder="<%= book.title%>" name="title">
+          <input type="text" value="<%= book.author%>" placeholder="<%= book.author%>" name="author">
+          <input type="text" value="<%= book.description%>" placeholder="<%= book.description%>" name="description">
+          <input type="text" value="<%= book.isbn%>" placeholder="<%= book.isbn%>" name="isbn">
+          <button type="submit" value="update">Update Book</button>
+        </form>
+        
+        <form method='post' action='/books/<%= book.id %>?_method=delete'>
+          <button type='submit'>Delete Book</button>
+        </form>
+        
+        <% }) %>
+      </section>
+        
+        <script src="../js/app.js"></script>
+      </body>
+      </html>

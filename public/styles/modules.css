@@ -38,6 +38,44 @@
 
 /* Style the active link (or home/logo) */
 .active {
-  background-color: darkslateblue;
+  background-color: darkslategrey;
   color: white;
 }
+
+
+
+form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+} 
+
+button {
+  display: block;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.card {
+  border: 1px solid black;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.searchForm {
+  background-color: powderblue;
+  display: inline-block;
+  padding-top: 20px;
+}
+
+

@@ -33,39 +33,45 @@
 
   <body>
  
-    <h1>Hello World!!</h1>
     <h2>
-      Book List
+      Your search results 
     </h2>
   
-    <ul>
+   
       <% books.forEach( book => { %>
-        <li>
-          <img src="<%= book.image_url %>" alt="<%= book.title %>" />
-        </li>
-        <li>
-          <%= book.title %>
-        </li>
-        <li>
-          <%= book.author %>
-        </li>
-        <li>
-          <%= book.description %>
-        </li>
-        <li>
-          <%= book.isbn %>
-        </li>
-        <form action="/show" method="post">
-        <input type="hidden" value="<%= book.image_url%>" name="image_url">
-        <input type="hidden" value="<%= book.title%>" name="title">
-        <input type="hidden" value="<%= book.author%>" name="author">
-        <input type="hidden" value="<%= book.description%>" name="description">
-        <input type="hidden" value="<%= book.isbn%>" name="isbn">
-        <input type="submit" value="saveBook">
-      </form>
-      <% }) %>
-  
-    </ul>
+        <section class="card">
+
+          
+            <img src="<%= book.image_url %>" alt="<%= book.title %>" />
+         
+          <h3>
+            <%= book.title %>
+          </h3>
+          <h4>
+            <%= book.author %>
+          </h4>
+          <center>
+
+            
+            <p>
+              <%= book.description %>
+            </p>
+            <p>
+              <%= book.isbn %>
+            </p>
+          </center>
+          <form action="/show" method="post">
+            <input type="hidden" value="<%= book.image_url%>" name="image_url">
+            <input type="hidden" value="<%= book.title%>" name="title">
+            <input type="hidden" value="<%= book.author%>" name="author">
+            <input type="hidden" value="<%= book.description%>" name="description">
+            <input type="hidden" value="<%= book.isbn%>" name="isbn">
+            <input type="submit" value="saveBook">
+          </form>
+        </section>
+          <% }) %>
+          
+   
   
 
 

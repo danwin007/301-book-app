@@ -59,5 +59,13 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 9:00pm: I've got the hamburger menu working. Brett got most of the Update functionality working. We are gonna sort out merge conflicts and Brett will finish Update features while I work on CSS the rest of the night.
 
+### // 2020.2.13 DAY 5? //
+
+5:20pm: I've lost count of the days. I got to class early and am trying to hammer this CSS into shape. 
+
+6:15pm: I've made some decent progress with the CSS. The app definitely looks less ugly. It still isn't perfect though.
+
+6:40pm: Got the CSS to a place where I'm happy-ish. Gonna ACP to save it while it's not too terrible.
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->

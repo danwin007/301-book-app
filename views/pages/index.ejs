@@ -10,37 +10,44 @@
 
 
 
+    <h1>Welcome to our Book App</h1>
 
+    <h3>Saved Book List</h3>
 
+    <center>
+      <p><%= books.length %> books saved</p>
+    </center> 
 
-    <h1>Hello World!!</h1>
+    
+    
+    <% books.forEach( book => { %>
+      <section class="card">
+    
+    <img src="<%= book.image_url %>" alt="<%= book.title %>" />
+    
+    <h3>
+      <%= book.title %>
+    </h3>
+    <h4>
+      <%= book.author %>
+    </h4>
+    <center>
 
-    <h3>Saved Book List</h3> 
-    <p><%= books.length %> books saved</p>
-    <ul>
-      <% books.forEach( book => { %>
-      <li>
-        <img src="<%= book.image_url %>" alt="<%= book.title %>" />
-      </li>
-      <li>
-        <%= book.title %>
-      </li>
-      <li>
-        <%= book.author %>
-      </li>
-
-      <li>
-        <%= book.isbn %>
-      </li>
-      <!-- details button -->
-      <form  method='post' action='/books/<%= book.id %>'>
-        <button>Details</button>
-        </form>
-      <% }) %>
-  
-    </ul>
-
-
+      
+      <p>
+        ISBN: <%= book.isbn %>
+      </p>
+    </center>
+    <!-- details button -->
+    <form method='post' action='/books/<%= book.id %>'>
+      <button>Details</button>
+    </form>
+  </section>
+    <% }) %>
+    
+    
+    
+    
     
 
     <script src="js/app.js"></script>
