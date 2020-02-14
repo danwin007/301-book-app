@@ -13,4 +13,18 @@ function myFunction() {
   }
 }
 
-// myFunction();
+// Show/Hide FN
+//Found at https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+
+function showUpdate() {
+  var x = document.getElementById("updateForm");
+  var y = document.getElementById("showHideUpdate");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+showUpdate();
