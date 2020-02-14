@@ -43,9 +43,29 @@ We will be using HTML, CSS, JavaScript, Node, NPM, express, superagent, postgres
 
 ### // 2020.2.8 DAY 3 //
 
-2:00pm: finished lunch, partner power hour, and career work. Now settling into starting on this lab. 
+2:00pm: Finished lunch, partner power hour, and career work. Now settling into starting on this lab. 
 
-4:30pm: been working on getting homepage dummy data rendering. Needed help from Cory and Leo to do that. Dummy data is working now. 
+4:30pm: Been working on getting homepage dummy data rendering. Needed help from Cory and Leo to do that. Dummy data is working now. 
+
+### // 2020.2.12 DAY 4? //
+ 
+5:00pm: Got to class early. Going to try and build out Details page before Brett gets in.
+
+6:30pm: Got the details page to load correctly. You can click from homepage to details page for individual books now. Gonna start adding buttons for Update/Delete on details page now.
+
+7:05pm: Buttons live now. Worked on some minor CSS as well. Need to build routes and forms for update/delete before working on functionality.
+
+7:35pm: Got the Delete button working on the Details page. Brett is working on the Update functionality. I'll pivot to helping with that.
+
+9:00pm: I've got the hamburger menu working. Brett got most of the Update functionality working. We are gonna sort out merge conflicts and Brett will finish Update features while I work on CSS the rest of the night.
+
+### // 2020.2.13 DAY 5? //
+
+5:20pm: I've lost count of the days. I got to class early and am trying to hammer this CSS into shape. 
+
+6:15pm: I've made some decent progress with the CSS. The app definitely looks less ugly. It still isn't perfect though.
+
+6:40pm: Got the CSS to a place where I'm happy-ish. Gonna ACP to save it while it's not too terrible.
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->

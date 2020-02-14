@@ -5,7 +5,7 @@ const pg = require('pg');
 const superagent = require('superagent');
 const express = require('express');
 const app = express();
-
+const methodOverride = require('method-override');
 const client = new pg.Client(process.env.DATABASE_URL);
 
 app.use(express.static('./public'));
@@ -13,6 +13,7 @@ app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 // ROUTES //
 //Render home page
@@ -31,6 +32,14 @@ app.get('/searches/show', (req, res) => {
   res.render('pages/searches/show.ejs');
 })
 
+app.post('/books/:id', renderDetails);
+app.delete('/books/:id', deleteBook);
+app.put('/books/:id', updateBook);
+
+app.get('/books/show', (req, res) => {
+  res.render('pages/books/show.ejs');
+})
+
 app.post('/searches', searchHandler);
 
 //Route Button to Save From Search
@@ -45,9 +54,42 @@ function Book(data){
   this.isbn = data.industryIdentifiers ? data.industryIdentifiers[0].identifier : 'No ISBN available';
 }
 
+function renderDetails (request, response) {
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
+  let values = [request.params.id];
+  return client.query(SQL, values)
+    .then(results => {
+      return response.render('pages/books/detail.ejs', {results: results.rows});
+    })
+    .catch(err => errorHandler (err, response));
+}
+
+function deleteBook (request, response) {
+  let SQL = 'DELETE FROM books WHERE id=$1';
+  let values = [request.params.id];
+  return client.query(SQL, values)
+    .then(() => {
+      response.redirect('/');
+    })
+    .catch(err => errorHandler (err, response));
+}
+
+function updateBook (request, response) {
+  console.log('made it this far Brett');
+  let SQL = 'UPDATE books SET image_url=$1, title=$2, author=$3, description=$4, isbn=$5 WHERE id=$6';
+  console.log(`in 'updateBook' but not in client.query\n${SQL}`);
+  let values = [request.body.image_url, request.body.title, request.body.author, request.body.description, request.body.isbn, request.params.id];
+  return client.query(SQL, values)
+    .then(() => {
+      console.log(SQL, values);
+      response.redirect('/');
+    })
+    .catch(err => errorHandler(err, response));
+}
+
 //Should push book item to DB from search results
 function saveFromSearch (request, response) {
-  console.log('request fron save fn', request);
+  console.log('request from save fn', request);
   let SQL = `
   INSERT INTO books (title, author, isbn, image_url, description)
   VALUES ($1, $2, $3, $4, $5)
@@ -92,6 +134,11 @@ function searchHandler (request, response) {
     errorHandler('something went wrong w the searchhandler', request, response);
   }
 }
+
+
+//Helper Functions
+
+
 
 //ERROR HANDLER
 function errorHandler(error, request, response) {
